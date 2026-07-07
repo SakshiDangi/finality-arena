@@ -1,0 +1,17 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./packages/shared"
+    },
+    {
+      "path": "./packages/finality"
+    },
+    {
+      "path": "./packages/storage"
+    },
+    {
+      "path": "./packages/protocol-adapter"
+    }
+  ]
+}
