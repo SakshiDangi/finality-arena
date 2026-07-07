@@ -1,0 +1,41 @@
+{
+  "name": "@finality/protocol-adapter",
+  "version": "1.0.0",
+  "description": "Protocol adapter for Finality Arena prediction workflow.",
+  "private": true,
+
+  "type": "module",
+
+  "sideEffects": false,
+
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+
+  "files": [
+    "dist"
+  ],
+
+  "scripts": {
+      "build": "tsc -b",
+      "typecheck": "tsc --noEmit",
+      "clean": "rm -rf dist tsconfig.tsbuildinfo"
+  },
+
+  "dependencies": {
+    "@finality/shared": "workspace:*",
+    "@finality/storage": "workspace:*",
+    "@finality/finality": "workspace:*"
+  },
+
+  "devDependencies": {
+    "tsup": "^8.5.1"
+  }
+}
