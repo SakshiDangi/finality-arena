@@ -14,6 +14,7 @@ export * from "./match.js";
 export * from "./prediction.js";
 
 export * from "./settlement.js";
+export * from "./leaderboard.js";
 
 /* =============================================================================
  * API Contracts

@@ -14,6 +14,10 @@ import {
   FinalityVerifier,
 } from "@finality/finality";
 
+import type {
+  FinalityReceipt,
+} from "@finality/finality";
+
 import {
   PredictionEngine,
 } from "./prediction-engine.js";
@@ -103,11 +107,19 @@ export class ProtocolService {
      * Submit to Finality
      * ---------------------------------------------------------------------- */
 
-    await this.submitter.submit(
-      response.prediction,
-    );
-
-    return response;
+    const submission =
+      await this.submitter.submit(
+        response.prediction,
+      );
+    
+    return {
+    
+      ...response,
+    
+      receipt:
+        submission.receipt,
+    
+    };
   }
 
   /* ==========================================================================
@@ -116,11 +128,7 @@ export class ProtocolService {
    */
 
   async verifySubmission(
-    receipt: Awaited<
-      ReturnType<
-        FinalitySubmitter["submit"]
-      >
-    >,
+    receipt: FinalityReceipt,
   ) {
     return this.verifier.verify(
       receipt,
