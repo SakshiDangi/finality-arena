@@ -12,8 +12,8 @@ import type {
 } from "./submit-request.js";
 
 import type {
-  SubmitPredictionResponse,
-} from "./submit-response.js";
+  PredictionEngineResult,
+} from "./prediction-result.js";
 
 import {
   assertValidPredictionRequest,
@@ -32,7 +32,7 @@ import {
 export class PredictionEngine {
   async submit(
     request: SubmitPredictionRequest,
-  ): Promise<SubmitPredictionResponse> {
+  ): Promise<PredictionEngineResult> {
 
     /* ------------------------------------------------------------------------
      * Validate request

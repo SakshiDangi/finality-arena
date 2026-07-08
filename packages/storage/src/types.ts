@@ -12,13 +12,24 @@ import type {
  * ============================================================================
  */
 
-export interface RepositoryResult<T> {
-  readonly success: boolean;
+/* ============================================================================
+ * Repository Result
+ * ============================================================================
+ */
 
-  readonly data?: T;
+export type RepositorySuccess<T> = {
+  readonly success: true;
+  readonly data: T;
+};
 
-  readonly error?: string;
-}
+export type RepositoryFailure = {
+  readonly success: false;
+  readonly error: string;
+};
+
+export type RepositoryResult<T> =
+  | RepositorySuccess<T>
+  | RepositoryFailure;
 
 /* ============================================================================
  * Match Repository

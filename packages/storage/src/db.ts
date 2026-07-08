@@ -1,60 +1,68 @@
 import type {
+  LeaderboardEntry,
   Match,
   MatchId,
   Prediction,
   PredictionId,
   Settlement,
   SettlementId,
+  UserId,
 } from "@finality/shared";
 
 /* ============================================================================
- * Database
+ * In-Memory Database
  * ============================================================================
  */
 
-export class InMemoryDatabase {
+export interface InMemoryDatabase {
+
   /**
-   * Matches
+   * Football matches.
    */
-  readonly matches = new Map<
+  matches: Map<
     MatchId,
     Match
-  >();
+  >;
 
   /**
-   * Predictions
+   * User predictions.
    */
-  readonly predictions = new Map<
+  predictions: Map<
     PredictionId,
     Prediction
-  >();
+  >;
 
   /**
-   * Settlements
+   * Settlements.
    */
-  readonly settlements = new Map<
+  settlements: Map<
     SettlementId,
     Settlement
-  >();
+  >;
 
-  /* ==========================================================================
-   * Reset
-   * ==========================================================================
+  /**
+   * Leaderboard.
    */
+  leaderboard: Map<
+    UserId,
+    LeaderboardEntry
+  >;
 
-  clear(): void {
-    this.matches.clear();
-
-    this.predictions.clear();
-
-    this.settlements.clear();
-  }
 }
 
 /* ============================================================================
- * Singleton
+ * Singleton Database
  * ============================================================================
  */
 
-export const database =
-  new InMemoryDatabase();
+export const database: InMemoryDatabase = {
+
+  matches: new Map(),
+
+  predictions: new Map(),
+
+  settlements: new Map(),
+
+  leaderboard: new Map(),
+
+};
