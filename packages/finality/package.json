@@ -27,6 +27,7 @@
   },
 
   "dependencies": {
-    "@finality/shared": "workspace:*"
+    "@finality/shared": "workspace:*",
+    "@finality/core": "file:../../vendor/finality/packages/core"
   }
 }
